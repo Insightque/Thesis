@@ -136,11 +136,11 @@ class Search:
         """pop from the S_open the nearest node to the goal, to be evaluated"""
         # TODO: Geci lassu
         min_index = 0
-        min_dist = self.S_open[0].h
+        min_dist = self.S_open[0].f
         for index, node in enumerate(self.S_open,0):
-            if node.h < min_dist:
+            if node.f < min_dist:
                 min_index = index
-                min_dist = node.h
+                min_dist = node.f
         return self.S_open.pop(min_index)
 
     def overlap(self,node1,node2):
