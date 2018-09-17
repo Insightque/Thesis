@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2486a948-2d95-48f7-81c2-30695284f9ac" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/try.py" beforeDir="false" afterPath="$PROJECT_DIR$/try.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,35 +15,37 @@
     <session id="1800107652">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.22" value="1" />
-          <entry key="project.open.time.27" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.open.time.24" value="1" />
+          <entry key="project.open.time.27" value="2" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="2" />
+          <entry key="py" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="2" />
+          <entry key="Python" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="5" />
-          <entry key="py" value="1373" />
+          <entry key="py" value="3960" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="5" />
-          <entry key="Python" value="1373" />
+          <entry key="Python" value="3960" />
         </counts>
       </usages-collector>
+      <usages-collector id="statistics.vcs.git.usages" />
     </session>
   </component>
   <component name="FileEditorManager">
@@ -50,13 +53,34 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/try.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="138" column="35" selection-start-line="138" selection-start-column="35" selection-end-line="138" selection-end-column="35" />
+            <state relative-caret-position="321">
+              <caret line="93" column="15" selection-start-line="93" selection-start-column="15" selection-end-line="93" selection-end-column="15" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
-                <marker date="1536909369161" expanded="true" signature="4846:5206" ph="..." />
-                <marker date="1536909369161" expanded="true" signature="5234:5242" ph="..." />
+                <marker date="1537224651371" expanded="true" signature="577:579" ph="..." />
+                <marker date="1537224651371" expanded="true" signature="1289:1292" ph="..." />
+                <marker date="1537224651371" expanded="true" signature="6580:6941" ph="..." />
+                <marker date="1537224651371" expanded="true" signature="6969:6977" ph="..." />
+                <marker date="1537224651371" expanded="true" signature="8049:8061" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://E:/Program Files/Anaconda/Lib/graphics.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="590" selection-start-line="590" selection-end-line="590" />
             </state>
           </provider>
         </entry>
@@ -67,6 +91,13 @@
     <findStrings>
       <find>SAMPLE</find>
       <find>not_exist</find>
+      <find>calc</find>
+      <find>calc_cost</find>
+      <find>calc_distance</find>
+      <find>PopNearest</find>
+      <find>cir</find>
+      <find>ze</find>
+      <find>expand</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -80,7 +111,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
+    <option name="x" value="2317" />
+    <option name="y" value="-10" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
@@ -155,16 +187,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.50641024" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3264642" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3275488" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.40635267" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3264642" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.40563992" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -185,38 +216,53 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/try.py</url>
-          <line>137</line>
-          <option name="timeStamp" value="11" />
+          <line>226</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/try.py</url>
-          <line>166</line>
-          <option name="timeStamp" value="13" />
+          <line>227</line>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/try.py</url>
-          <line>143</line>
-          <option name="timeStamp" value="14" />
+          <line>265</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/try.py</url>
+          <line>228</line>
+          <option name="timeStamp" value="37" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://E:/Program Files/Anaconda/Lib/graphics.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="541" column="23" selection-start-line="541" selection-start-column="23" selection-end-line="541" selection-end-column="23" />
+        <state relative-caret-position="180">
+          <caret line="590" selection-start-line="590" selection-end-line="590" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/try.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="138" column="35" selection-start-line="138" selection-start-column="35" selection-end-line="138" selection-end-column="35" />
+        <state relative-caret-position="321">
+          <caret line="93" column="15" selection-start-line="93" selection-start-column="15" selection-end-line="93" selection-end-column="15" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <marker date="1536909369161" expanded="true" signature="4846:5206" ph="..." />
-            <marker date="1536909369161" expanded="true" signature="5234:5242" ph="..." />
+            <marker date="1537224651371" expanded="true" signature="577:579" ph="..." />
+            <marker date="1537224651371" expanded="true" signature="1289:1292" ph="..." />
+            <marker date="1537224651371" expanded="true" signature="6580:6941" ph="..." />
+            <marker date="1537224651371" expanded="true" signature="6969:6977" ph="..." />
+            <marker date="1537224651371" expanded="true" signature="8049:8061" ph="..." />
           </folding>
         </state>
       </provider>

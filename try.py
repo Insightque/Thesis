@@ -1,6 +1,7 @@
 import graphics
 import math
 
+
 SIZEX = 1000
 SIZEY = 700
 BORDER = 50
@@ -10,11 +11,46 @@ CIRCLES_2_DRAW = []
 pi = 3.14
 # SAMPLE = 5
 SAMPLE = 5
+OBSTACLES = []
+CARSIZE = 0
+
 
 def calc_distance(node1, node2):
     """calculating Eucledian distance from a node to an other"""
-    distance = (node1.x - node2.x) ** 2 + (node1.y - node2.y) ** 2
+    if type(node2) == Node:
+        distance = (node1.x - node2.x) ** 2 + (node1.y - node2.y) ** 2
+    elif type(node2)== graphics.Point:
+        distance = (node1.x - node2.getX()) ** 2 + (node1.y - node2.getY()) ** 2
     return math.sqrt(distance)
+
+
+def inside(node,rectangle):
+    x2 = rectangle.getP1().getX()
+    y2 = rectangle.getP1().getY()
+    x1 = rectangle.getP2().getX()
+    y1 = rectangle.getP2().getY()
+    rx = None
+    ry = None
+    if x1 < node.x < x2 and y1 < node.y < y2:
+        print("collision")
+        return None
+    elif x1 < node.x < x2:
+        rx = node.x
+    elif y1 < node.y < y2:
+        ry = node.y
+    if rx is None:
+        if abs(node.x - x1) < abs(node.x - x2):
+            rx = x1
+        else:
+            rx = x2
+    if ry is None:
+        if abs(node.y - y1) < abs(node.y - y2):
+            ry = y1
+        else:
+            ry = y2
+    return graphics.Point(rx,ry)                      # TODO: itt jól betekeri magát apa
+
+
 
 class Vector:
     """Vector to know the directions"""
@@ -36,15 +72,35 @@ class Node:
         # self.g = math.sqrt(dist2)
         if self.parent is not None:
             self.g = self.parent.g + self.parent.circle.r                               # g : distance from the start node
-        self.h = calc_distance(self, reference)                                       # h : heuristic distance to the goal
+        else:
+            self.g = self.circle.r
+        self.h = calc_distance(self, reference) - (self.circle.r + reference.circle.r)  # h : heuristic distance to the goal
         self.f = self.g + self.h                                        # f : total cost = g + h
 
+    def get_r_free(node):
+        min_dist = max(SIZEX, SIZEY)
+        for obstacle in OBSTACLES:
+            reference = inside(node, obstacle)
+            if type(reference) == graphics.Point:
+                distance = calc_distance(node, reference)
+                distance -= CARSIZE
+                if distance < min_dist:
+                    min_dist = distance
+            else:
+                min_dist = -1
+        return min_dist
+
     def __init__(self, x, y):
-        self.x = x
-        self.y = y
-        self.circle = Circle(x, y, RADIUS)
-
-
+        if 0 < x < SIZEX and 0 < y < SIZEY:
+            self.x = x
+            self.y = y
+        else:
+            raise ValueError
+        r = self.get_r_free()
+        if 5 < r:
+            self.circle = Circle(x, y, r)
+        else:
+            raise ValueError                # TODO: itt meg mi a fasz van? :D
 
 class Circle:
     """ Shape to draw"""
@@ -53,6 +109,7 @@ class Circle:
         self.x = x
         self.y = y
         self.r = r
+
 
     def draw_circle(self):
         pt = graphics.Point(self.x, self.y)
@@ -106,6 +163,9 @@ class Search:
             new_nodes = [node_new1, node_new2, node_new3, node_new4]
             for index, n in reversed(list(enumerate(new_nodes))):
                 n.parent = node
+                if n.circle.r < 5:
+                    new_nodes.pop(index)
+                    break
                 n.calc_cost(self.n_goal)
                 for element in self.NODES:
                     if element.x == n.x and element.y == n.y and element.direction == n.direction:  # TODO: nem tudom hogy itt kell e gyorsítani de próbának jó lesz
@@ -141,7 +201,7 @@ class Search:
             if node.f < min_dist:
                 min_index = index
                 min_dist = node.f
-        return self.S_open.pop(min_index)
+        return self.S_open.pop(min_index), min_index
 
     def overlap(self,node1,node2):
         if calc_distance(node1, node2) <= (node1.circle.r + node2.circle.r):
@@ -153,7 +213,7 @@ class Search:
         node = self.n_goal
         while node != self.n_start:
             parent = node.parent
-            pt1 =graphics.Point(parent.x,parent.y)
+            pt1 = graphics.Point(parent.x,parent.y)
             pt2 = graphics.Point(node.x,node.y)
             ln = graphics.Line(pt1, pt2)
             ln.setWidth(10)
@@ -164,31 +224,52 @@ class Search:
     def space_exploration(self):
        # TODO: here to start
         while self.S_open:
-            node = self.PopNearest()
+            node, idx = self.PopNearest()
+            node.circle.draw_circle().setOutline("red")
             if self.n_goal.parent is not None:          # TODO: valahogy ellenőrizzük ha ott vagyunk a célnál IDK if it's good
                 self.recurse()
                 return True
 
             elif self.not_exist(node):
-                self.expand(node)
+                try:
+                    self.expand(node)
+                except ValueError:
+                    pass
                 if self.overlap(node, self.n_goal):
                     self.n_goal.g = node.f
                     self.n_goal.parent = node
                 self.S_closed.append(node)
+                self.S_open.pop(idx)                    # TODO: valahogy fail-el a pop nearest
         return False
 
+
+class Obstacle():
+
+    def __init__(self, x, y):
+        pt1 = graphics.Point(x+10, y+100)
+        pt2 = graphics.Point(x-10, y-100)
+        rect = graphics.Rectangle(pt1,pt2)
+        rect.setFill("black")
+        rect.draw(WINDOW)
+        OBSTACLES.append(rect)
+
+
+class Data():
+    pass
+
+
 def main():
+    while WINDOW.checkKey() != "space":
+        if WINDOW.checkMouse()!= None:
+            click = WINDOW.getMouse()
+            Obstacle(click.x, click.y)
     start = Node(BORDER, BORDER)
     goal = Node(SIZEX-BORDER, SIZEY-BORDER)
     test = Search(start, goal)
     if test.space_exploration():
         print("DONE")
     while True:
-        """Waiting for click and closing the window"""
-        try:
-            WINDOW.getMouse()
-        except graphics.GraphicsError:
-            pass
+        pass
 
 
 try:
