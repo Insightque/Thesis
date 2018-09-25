@@ -1,9 +1,9 @@
 import graphics
 import math
+import time
 
-
-SIZEX = 1000
-SIZEY = 700
+SIZEX = 1500
+SIZEY = 900
 BORDER = 50
 RADIUS = (BORDER / 2) + 1
 WINDOW = graphics.GraphWin("Pathfind", SIZEX, SIZEY)
@@ -14,6 +14,7 @@ SAMPLE = 5
 OBSTACLES = []
 CARSIZE = 0
 VERTICAL = True
+
 
 def calc_distance(node1, node2):
     """calculating Eucledian distance from a node to an other"""
@@ -53,6 +54,59 @@ def inside(point, rectangle):
     return graphics.Point(rx, ry)                      # TODO: itt jól betekeri magát apa
 
 
+def build_ring():
+    # felső _
+    pt2 = graphics.Point(0, 0)
+    pt1 = graphics.Point(SIZEX, 0)
+    rect = graphics.Rectangle(pt1, pt2)
+    rect.setFill("black")
+    rect.draw(WINDOW)
+    OBSTACLES.append(rect)
+
+    # bal |
+    pt2 = graphics.Point(0, 0)
+    pt1 = graphics.Point(0, SIZEY)
+    rect1 = graphics.Rectangle(pt1, pt2)
+    rect1.setFill("black")
+    rect1.draw(WINDOW)
+    OBSTACLES.append(rect1)
+
+    # alsó _
+    pt1 = graphics.Point(SIZEX, SIZEY)
+    pt2 = graphics.Point(0, SIZEY+10)
+    rect2 = graphics.Rectangle(pt1, pt2)
+    rect2.setFill("black")
+    rect2.draw(WINDOW)
+    OBSTACLES.append(rect2)
+
+    # jobb |
+    pt2 = graphics.Point(SIZEX, 0)
+    pt1 = graphics.Point(SIZEX, SIZEY)
+    rect3 = graphics.Rectangle(pt1, pt2)
+    rect3.setFill("black")
+    rect3.draw(WINDOW)
+    OBSTACLES.append(rect3)
+
+
+class Data():
+    pass
+
+
+class Obstacle():
+
+    def __init__(self, x, y):
+        if VERTICAL:
+            pt1 = graphics.Point(x+10, y+100)
+            pt2 = graphics.Point(x-10, y-100)
+        else:
+            pt1 = graphics.Point(x + 100, y + 10)
+            pt2 = graphics.Point(x - 100, y - 10)
+        rect = graphics.Rectangle(pt1,pt2)
+        rect.setFill("black")
+        rect.draw(WINDOW)
+        OBSTACLES.append(rect)
+
+
 class Vector:
     """Vector to know the directions"""
     def __init__(self, x2=0, y2=0, x1=0, y1=0):
@@ -69,8 +123,6 @@ class Node:
     f = 0
 
     def calc_cost(self, reference):
-        # dist2 = (self.parent.x - self.x)**2 + (self.parent.y - self.y)**2
-        # self.g = math.sqrt(dist2)
         if self.parent is not None:
             self.g = self.parent.g + self.parent.circle.r                               # g : distance from the start node
         else:
@@ -103,7 +155,7 @@ class Circle:
         return circle
 
 
-class Search:
+class Explore:
     """Structure for the algorithm"""
 
     S_open = []
@@ -149,14 +201,8 @@ class Search:
             dy = node.circle.r * math.sin(alpha)
             dx = node.circle.r * math.cos(alpha)
 
-            if node.parent is not None:
-                legacy_x = node.parent.direction.x
-                legacy_y = node.parent.direction.y
-            else:
-                legacy_x = 0
-                legacy_y = 0
-            x1 = node.circle.x + dx + legacy_x
-            y1 = node.circle.y + dy + legacy_y
+            x1 = node.circle.x + dx
+            y1 = node.circle.y + dy
             try:
                 node_new1 = Node(x1, y1, self.get_r_free(x1, y1))
                 node_new1.direction = Vector(dx, dy)
@@ -164,8 +210,8 @@ class Search:
             except ValueError:
                 pass
 
-            x2 = node.circle.x - dx + legacy_x
-            y2 = node.circle.y + dy + legacy_y
+            x2 = node.circle.x - dx
+            y2 = node.circle.y + dy
             try:
                 node_new2 = Node(x2, y2, self.get_r_free(x2, y2))
                 node_new2.direction = Vector(-dx, dy)
@@ -173,8 +219,8 @@ class Search:
             except ValueError:
                 pass
 
-            x3 = node.circle.x + dx + legacy_x
-            y3 = node.circle.y - dy + legacy_y
+            x3 = node.circle.x + dx
+            y3 = node.circle.y - dy
             try:
                 node_new3 = Node(x3, y3, self.get_r_free(x3, y3))
                 node_new3.direction = Vector(dx, -dy)
@@ -182,8 +228,8 @@ class Search:
             except ValueError:
                 pass
 
-            x4 = node.circle.x - dx + legacy_x
-            y4 = node.circle.y - dy + legacy_y
+            x4 = node.circle.x - dx
+            y4 = node.circle.y - dy
             try:
                 node_new4 = Node(x4, y4, self.get_r_free(x4, y4))
                 node_new4.direction = Vector(-dx, -dy)
@@ -196,7 +242,7 @@ class Search:
 
                 n.calc_cost(self.n_goal)
                 for element in self.NODES:
-                    if element.x == n.x and element.y == n.y and element.direction == n.direction:  # TODO: nem tudom hogy itt kell e gyorsítani de próbának jó lesz
+                    if element.x == n.x and element.y == n.y :  # TODO: nem tudom hogy itt kell e gyorsítani de próbának jó lesz
                         new_nodes.pop(index)
                         break
                     elif calc_distance(element, n) < element.circle.r:
@@ -209,6 +255,7 @@ class Search:
         # drawing the circles to the window
 
         for index, node in reversed(list(enumerate(CIRCLES_2_DRAW))):
+            #time.sleep(0.1)
             node.circle.draw_circle().setOutline("purple")
             CIRCLES_2_DRAW.pop(index)
 
@@ -220,7 +267,7 @@ class Search:
                 break
         return not_find
 
-    def PopNearest(self):                       # TODO: Itt mit is keresünk? f-et? az így nagyon elment?
+    def pop_nearest(self):                       # TODO: Itt mit is keresünk? f-et? az így nagyon elment?
         """pop from the S_open the nearest node to the goal, to be evaluated"""
         # TODO: Geci lassu
         min_index = 0
@@ -229,7 +276,7 @@ class Search:
             if node.f < min_dist:
                 min_index = index
                 min_dist = node.f
-        return self.S_open.pop(min_index), min_index
+        return self.S_open.pop(min_index)
 
     def overlap(self,node1,node2):
         if calc_distance(node1, node2) <= (node1.circle.r + node2.circle.r):
@@ -238,8 +285,10 @@ class Search:
             return False
 
     def recurse(self):
+        circle_path = []
         node = self.n_goal
         while node != self.n_start:
+            circle_path.append(node)
             parent = node.parent
             pt1 = graphics.Point(parent.x,parent.y)
             pt2 = graphics.Point(node.x,node.y)
@@ -248,15 +297,17 @@ class Search:
             ln.setOutline('orange')
             ln.draw(WINDOW)
             node = parent
+        return circle_path
 
     def space_exploration(self):
-       # TODO: here to start
+        # TODO: here to start
+        circle_path = []
         while self.S_open:
-            node, idx = self.PopNearest()
+            node= self.pop_nearest()
             node.circle.draw_circle().setOutline("red")
             if self.n_goal.parent is not None:          # TODO: valahogy ellenőrizzük ha ott vagyunk a célnál IDK if it's good
-                self.recurse()
-                return True
+                circle_path = self.recurse()
+                return True, circle_path
 
             elif self.not_exist(node):
                 self.expand(node)
@@ -264,59 +315,7 @@ class Search:
                     self.n_goal.g = node.f
                     self.n_goal.parent = node
                 self.S_closed.append(node)
-        return False
-
-
-class Obstacle():
-
-    def __init__(self, x, y):
-        if VERTICAL:
-            pt1 = graphics.Point(x+10, y+100)
-            pt2 = graphics.Point(x-10, y-100)
-        else:
-            pt1 = graphics.Point(x + 100, y + 10)
-            pt2 = graphics.Point(x - 100, y - 10)
-        rect = graphics.Rectangle(pt1,pt2)
-        rect.setFill("black")
-        rect.draw(WINDOW)
-        OBSTACLES.append(rect)
-
-
-class Data():
-    pass
-
-def build_ring():
-    # felső _
-    pt2 = graphics.Point(0, 0)
-    pt1 = graphics.Point(SIZEX, 0)
-    rect = graphics.Rectangle(pt1, pt2)
-    rect.setFill("black")
-    rect.draw(WINDOW)
-    OBSTACLES.append(rect)
-
-    # bal |
-    pt2 = graphics.Point(0, 0)
-    pt1 = graphics.Point(0, SIZEY)
-    rect1 = graphics.Rectangle(pt1, pt2)
-    rect1.setFill("black")
-    rect1.draw(WINDOW)
-    OBSTACLES.append(rect1)
-
-    # alsó _
-    pt1 = graphics.Point(SIZEX, SIZEY)
-    pt2 = graphics.Point(0, SIZEY+10)
-    rect2 = graphics.Rectangle(pt1, pt2)
-    rect2.setFill("black")
-    rect2.draw(WINDOW)
-    OBSTACLES.append(rect2)
-
-    # jobb |
-    pt2 = graphics.Point(SIZEX, 0)
-    pt1 = graphics.Point(SIZEX, SIZEY)
-    rect3 = graphics.Rectangle(pt1, pt2)
-    rect3.setFill("black")
-    rect3.draw(WINDOW)
-    OBSTACLES.append(rect3)
+        return False, circle_path
 
 
 def main():
@@ -325,7 +324,7 @@ def main():
     pressed = None
     while pressed !="Return":
         pressed = WINDOW.checkKey()
-        cin_cin =WINDOW.checkMouse()
+        cin_cin = WINDOW.checkMouse()
         if pressed == "space":
             VERTICAL = not VERTICAL
         if cin_cin!= None:
@@ -334,15 +333,19 @@ def main():
         print(pressed)
     start = Node(BORDER, BORDER)
     goal = Node(SIZEX-BORDER, SIZEY-BORDER)
-    test = Search(start, goal)
-    if test.space_exploration():
-        print("DONE")
+    test = Explore(start, goal)
+    path_found, circle_path = test.space_exploration()
+    if path_found:
+        print("DONE:", circle_path)
+    else:
+        print("Path doesn't exist")
     while True:
         pass
 
 
 try:
     main()
+
 except:
     if graphics.GraphicsError:
         raise
