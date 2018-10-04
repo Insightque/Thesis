@@ -137,6 +137,7 @@ class Node:
     g = 0
     h = 0
     f = 0
+    dist_along_path = 0
 
     def calc_cost(self, reference):
         # dist2 = (self.parent.x - self.x)**2 + (self.parent.y - self.y)**2
@@ -306,6 +307,7 @@ class Explore:
             ln.setWidth(10)
             ln.setOutline('orange')
             ln.draw(WINDOW)
+            parent.dist_along_path = calc_distance(parent,node) + node.dist_along_path
             node = parent
         for index,x in enumerate(reversed(path_from_end)):
             if  0 < index < len(path_from_end):
@@ -358,7 +360,7 @@ class State():
             pass
         self.g = 0
 
-        self.h = calc_distance(self, node.next) + node.h
+        self.h = calc_distance(self, node.next) + node.dist_along_path
         self.f = self.g + self.h                                              # f : total cost = g + h
 
 

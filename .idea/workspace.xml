@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2486a948-2d95-48f7-81c2-30695284f9ac" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/try.py" beforeDir="false" afterPath="$PROJECT_DIR$/try.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,7 +14,7 @@
     <session id="1800107652">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="16" />
+          <entry key="project.closed" value="19" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.18" value="1" />
           <entry key="project.open.time.22" value="2" />
@@ -23,9 +22,14 @@
           <entry key="project.open.time.27" value="3" />
           <entry key="project.open.time.29" value="1" />
           <entry key="project.open.time.30" value="1" />
+          <entry key="project.open.time.36" value="1" />
+          <entry key="project.open.time.37" value="1" />
+          <entry key="project.open.time.39" value="1" />
           <entry key="project.open.time.46" value="1" />
+          <entry key="project.open.time.56" value="1" />
+          <entry key="project.open.time.64" value="1" />
           <entry key="project.open.time.7" value="4" />
-          <entry key="project.opened" value="16" />
+          <entry key="project.opened" value="21" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -40,15 +44,15 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="319" />
+          <entry key="Python Console" value="355" />
           <entry key="dummy" value="28" />
-          <entry key="py" value="9734" />
+          <entry key="py" value="10458" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="28" />
-          <entry key="Python" value="10053" />
+          <entry key="Python" value="10813" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -62,8 +66,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/try.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4352">
-              <caret line="258" column="58" selection-start-line="258" selection-start-column="17" selection-end-line="258" selection-end-column="58" />
+            <state relative-caret-position="4539">
+              <caret line="269" column="18" selection-start-line="269" selection-start-column="12" selection-end-line="269" selection-end-column="18" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -74,11 +78,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/try2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="400" column="16" selection-start-line="400" selection-start-column="16" selection-end-line="400" selection-end-column="16" />
+            <state relative-caret-position="221">
+              <caret line="356" column="35" lean-forward="true" selection-start-line="356" selection-start-column="35" selection-end-line="356" selection-end-column="35" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
-                <marker date="1537913572755" expanded="true" signature="13769:13804" ph="..." />
+                <marker date="1538682932000" expanded="true" signature="13894:13929" ph="..." />
               </folding>
             </state>
           </provider>
@@ -127,8 +131,6 @@
       <find>direction</find>
       <find>CIRCLES</find>
       <find>CIRCLE</find>
-      <find>expand</find>
-      <find>Node</find>
       <find>Nodes</find>
       <find>calc_distance</find>
       <find>Sear</find>
@@ -139,6 +141,11 @@
       <find>3.1</find>
       <find>MAXIMAL_CURVE</find>
       <find>calc_cos</find>
+      <find>A = 0,</find>
+      <find>neares</find>
+      <find>expand</find>
+      <find>recur</find>
+      <find>Node</find>
       <find>calc_cost</find>
     </findStrings>
   </component>
@@ -153,11 +160,10 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2097" />
-    <option name="y" value="-8" />
-    <option name="width" value="1440" />
-    <option name="height" value="462" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="478" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -244,15 +250,33 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="478" y="0" width="1936" height="1056" extended-state="0" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49731904" weight="0.14225501" />
       <window_info id="Structure" order="1" sideWeight="0.50268096" side_tool="true" weight="0.14225501" />
       <window_info id="Favorites" order="2" sideWeight="0.50080776" side_tool="true" weight="0.07060063" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3264642" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49947312" weight="0.19088937" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49947312" weight="0.18980478" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.2451193" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32858709" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.329718" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50052685" side_tool="true" weight="0.3329718" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32858709" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" visible="true" weight="0.25" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49731904" weight="0.14225501" />
+      <window_info id="Structure" order="1" sideWeight="0.50268096" side_tool="true" weight="0.14225501" />
+      <window_info id="Favorites" order="2" sideWeight="0.50080776" side_tool="true" weight="0.07060063" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3264642" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49947312" visible="true" weight="0.19088937" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.5097614" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -264,7 +288,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" visible="true" weight="0.25" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -274,27 +298,22 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/try2.py</url>
-          <line>316</line>
+          <line>318</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/try2.py</url>
-          <line>523</line>
+          <line>525</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/try2.py</url>
-          <line>454</line>
+          <line>456</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/try2.py</url>
-          <line>375</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/try2.py</url>
-          <line>374</line>
+          <line>376</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
@@ -310,8 +329,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/try.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4352">
-          <caret line="258" column="58" selection-start-line="258" selection-start-column="17" selection-end-line="258" selection-end-column="58" />
+        <state relative-caret-position="4539">
+          <caret line="269" column="18" selection-start-line="269" selection-start-column="12" selection-end-line="269" selection-end-column="18" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
@@ -341,11 +360,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/try2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="400" column="16" selection-start-line="400" selection-start-column="16" selection-end-line="400" selection-end-column="16" />
+        <state relative-caret-position="221">
+          <caret line="356" column="35" lean-forward="true" selection-start-line="356" selection-start-column="35" selection-end-line="356" selection-end-column="35" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <marker date="1537913572755" expanded="true" signature="13769:13804" ph="..." />
+            <marker date="1538682932000" expanded="true" signature="13894:13929" ph="..." />
           </folding>
         </state>
       </provider>
